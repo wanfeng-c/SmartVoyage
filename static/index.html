@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#263B52">
+<meta name="color-scheme" content="light">
+<title>SmartVoyage · 冰雪幻想旅行志</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d2145'/%3E%3Cpath d='M16 4 28 11 16 28 4 11Z' fill='none' stroke='%238FCBFF' stroke-width='1.4'/%3E%3Cpath d='M4 11h24M16 4v24' stroke='%238FCBFF' stroke-width='.7' opacity='.55'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="/bg.jpg">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ============ 图标精灵（全部内联，无 CDN 依赖） ============ -->
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-cloud-sun" viewBox="0 0 24 24"><path d="M12 2v2M4.93 4.93l1.41 1.41M20 12h2M19.07 4.93l-1.41 1.41M15.947 12.65a4 4 0 0 0-5.925-4.128"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1M15 15l1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3M16 19l2 3"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5h.01"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24"><path d="M12.8 19.6A2 2 0 1 0 14 16H2M17.5 8a2.5 2.5 0 1 1 2 4H2M9.8 4.4A2 2 0 1 1 11 8H2"/></symbol>
+  <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+  <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-panel-right" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M15 4v16"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 5.5A2.5 2.5 0 0 0 13.5 3h-8A2.5 2.5 0 0 0 3 5.5v8A2.5 2.5 0 0 0 5.5 16"/></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7.5V12l3.5 2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2.5 2.5 0 0 0 0 5 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2.5 2.5 0 0 0 0-5Z"/><path d="M13 7v2M13 12v2M13 17v1"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M2 12h20M12 2v20"/><path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4"/></symbol>
+  <symbol id="i-crystal" viewBox="0 0 24 24"><path d="M12 2.5 21 8l-9 13.5L3 8Z"/><path d="M3 8h18M12 2.5v19M7.5 8 12 15l4.5-7"/></symbol>
+</svg>
+
+<!-- ============ 场景层：原图 + 雾霭 + 极光 + 暗角 ============ -->
+<div class="scene" aria-hidden="true">
+  <div class="scene__photo" id="scenePhoto"></div>
+  <div class="scene__bloom"></div>
+  <div class="scene__aurora">
+    <span class="aurora aurora--a"></span>
+    <span class="aurora aurora--b"></span>
+    <span class="aurora aurora--c"></span>
+  </div>
+  <div class="scene__veil"></div>
+  <div class="scene__vignette"></div>
+  <div class="scene__grain"></div>
+</div>
+
+<canvas id="fx" class="fx" aria-hidden="true"></canvas>
+<div class="pointer-glow" id="pointerGlow" aria-hidden="true"></div>
+
+<!-- ============ 应用外壳 ============ -->
+<div class="shell" id="shell">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand__crest">
+        <svg viewBox="0 0 48 48" class="brand__svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="crestGrad" x1="10" y1="4" x2="38" y2="44" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#F2F9FF"/><stop offset=".48" stop-color="#A9D8FF"/><stop offset="1" stop-color="#5E8AC8"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 3 42 14 24 45 6 14Z" stroke="url(#crestGrad)" stroke-width="1.3" fill="rgba(143,203,255,.10)"/>
+          <path d="M6 14h36M24 3v42M14.5 14 24 28.5 33.5 14" stroke="url(#crestGrad)" stroke-width=".85" opacity=".72" fill="none"/>
+          <circle cx="24" cy="23.5" r="2" fill="#F4FBFF"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Smart<em>Voyage</em></span>
+        <span class="brand__sub">冰雪幻想 · ANIME TRAVEL JOURNEY</span>
+      </span>
+    </div>
+
+    <div class="topbar__mid">
+      <button type="button" class="icon-btn icon-btn--rail" id="railToggle" aria-label="打开旅行控制台" aria-expanded="false" aria-controls="rail">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
+      <div class="crumb">
+        <span class="crumb__label">当前旅程</span>
+        <h1 class="crumb__title" id="sessionTitle" title="新的旅程">新的旅程</h1>
+      </div>
+    </div>
+
+    <div class="topbar__right">
+      <span class="chip chip--date">
+        <svg class="icon"><use href="#i-calendar"/></svg>
+        <span id="todayLabel">11月02日 · 周一</span>
+      </span>
+      <span class="chip chip--clock">
+        <svg class="icon"><use href="#i-clock"/></svg>
+        <span id="clockLabel">--:--</span>
+      </span>
+      <span class="chip chip--health" id="apiChip" data-state="checking">
+        <span class="chip__dot"></span>
+        <span id="apiChipText">连接中</span>
+      </span>
+      <button type="button" class="icon-btn icon-btn--insight" id="insightToggle" aria-label="打开旅行情报面板" aria-expanded="false" aria-controls="insight">
+        <svg class="icon"><use href="#i-panel-right"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="workspace">
+
+    <!-- ==================== 左：旅行控制台 ==================== -->
+    <aside class="rail" id="rail" aria-label="旅行控制台">
+      <div class="rail__head">
+        <span class="rail__eyebrow">MISSION&nbsp;CONTROL</span>
+        <h2 class="rail__title">旅行控制台</h2>
+      </div>
+
+      <button type="button" class="btn-new" id="newChat">
+        <span class="btn-new__sheen"></span>
+        <span class="btn-new__icon"><svg class="icon"><use href="#i-plus"/></svg></span>
+        <span class="btn-new__label">新建旅行对话</span>
+        <svg class="icon btn-new__arrow"><use href="#i-arrow-right"/></svg>
+      </button>
+
+      <nav class="rail__nav" aria-label="旅行服务">
+        <p class="rail__section"><span>旅程服务</span><i></i></p>
+        <button type="button" class="navitem" data-prompt="帮我查一下上海未来三天的天气，并给出穿衣建议">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-cloud-sun"/></svg>
+          <span class="navitem__label">天气查询</span>
+          <span class="navitem__meta">和风</span>
+        </button>
+        <button type="button" class="navitem" data-prompt="帮我查一下上海到成都后天的机票">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-plane"/></svg>
+          <span class="navitem__label">机票查询</span>
+          <span class="navitem__meta">航班</span>
+        </button>
+        <button type="button" class="navitem" data-prompt="帮我查一下上海到南京后天的火车票">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-train"/></svg>
+          <span class="navitem__label">火车票查询</span>
+          <span class="navitem__meta">车次</span>
+        </button>
+        <button type="button" class="navitem" data-prompt="最近上海有什么演唱会？">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-music"/></svg>
+          <span class="navitem__label">演唱会查询</span>
+          <span class="navitem__meta">场次</span>
+        </button>
+        <button type="button" class="navitem" data-prompt="帮我查一下上海明天可租的车型">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-car"/></svg>
+          <span class="navitem__label">租车服务</span>
+          <span class="navitem__meta">自驾</span>
+        </button>
+        <button type="button" class="navitem" data-prompt="帮我推荐一个杭州三天两晚的旅游团">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-users"/></svg>
+          <span class="navitem__label">旅游团推荐</span>
+          <span class="navitem__meta">线路</span>
+        </button>
+        <button type="button" class="navitem" data-prompt="帮我看看去云南五天需要什么旅游保险">
+          <span class="navitem__mark"></span>
+          <svg class="icon navitem__icon"><use href="#i-shield"/></svg>
+          <span class="navitem__label">旅游保险</span>
+          <span class="navitem__meta">保障</span>
+        </button>
+      </nav>
+
+      <section class="rail__history" aria-label="历史会话">
+        <div class="rail__section rail__section--row">
+          <span>历史会话</span><i></i>
+          <span class="badge" id="historyCount">0</span>
+          <button type="button" class="mini-btn" id="refreshSessions" aria-label="刷新历史会话" title="刷新历史会话">
+            <svg class="icon"><use href="#i-refresh"/></svg>
+          </button>
+        </div>
+        <div class="session-list" id="sessionList" role="list">
+          <div class="session-empty">
+            <svg class="icon"><use href="#i-crystal"/></svg>
+            <span>正在读取旅程记录…</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="rail__foot">
+        <span class="rail__foot-line"></span>
+        <p>SmartVoyage · 冰雪幻想 <b>v1.0</b></p>
+      </footer>
+    </aside>
+
+    <!-- ==================== 中：AI 旅行助手 ==================== -->
+    <main class="stage" id="stage">
+
+      <div class="stage__scroll" id="stageScroll">
+
+        <!-- 欢迎页 -->
+        <section class="welcome" id="welcome">
+          <div class="welcome__content">
+            <p class="welcome__eyebrow">
+              <span class="rule"></span>
+              SMART VOYAGE · YOUR AI TRAVEL COMPANION
+              <span class="rule"></span>
+            </p>
+
+            <h2 class="welcome__title">
+              让每一次旅行，
+              <span class="welcome__title-em">都成为一场奇妙的冒险</span>
+            </h2>
+
+            <p class="welcome__lede">
+              你好，旅行者。我是你的专属 AI 旅行规划师，告诉我你的目的地，让我们一起开启一场奇妙的旅程。
+            </p>
+
+            <div class="quick-grid">
+              <button type="button" class="quick" data-prompt="帮我查一下上海未来三天的天气，并给出穿衣和出行建议">
+                <span class="quick__halo"></span>
+                <span class="quick__icon"><svg class="icon"><use href="#i-cloud-sun"/></svg></span>
+                <span class="quick__text">
+                  <strong>天气探索</strong>
+                  <small>实时气象与预报</small>
+                </span>
+                <svg class="icon quick__arrow"><use href="#i-arrow-right"/></svg>
+              </button>
+              <button type="button" class="quick" data-prompt="帮我查一下上海到成都后天的机票和火车票，比较一下价格">
+                <span class="quick__halo"></span>
+                <span class="quick__icon"><svg class="icon"><use href="#i-plane"/></svg></span>
+                <span class="quick__text">
+                  <strong>机票与火车票</strong>
+                  <small>班次 · 余票 · 比价</small>
+                </span>
+                <svg class="icon quick__arrow"><use href="#i-arrow-right"/></svg>
+              </button>
+              <button type="button" class="quick" data-prompt="最近上海有什么演唱会？帮我看看场次和票档">
+                <span class="quick__halo"></span>
+                <span class="quick__icon"><svg class="icon"><use href="#i-music"/></svg></span>
+                <span class="quick__text">
+                  <strong>演唱会探索</strong>
+                  <small>场次 · 票档 · 场馆</small>
+                </span>
+                <svg class="icon quick__arrow"><use href="#i-arrow-right"/></svg>
+              </button>
+              <button type="button" class="quick" data-prompt="帮我规划一个三天两夜的杭州行程，包含交通、住宿和预算建议">
+                <span class="quick__halo"></span>
+                <span class="quick__icon"><svg class="icon"><use href="#i-compass"/></svg></span>
+                <span class="quick__text">
+                  <strong>旅行计划</strong>
+                  <small>路线 · 住宿 · 预算</small>
+                </span>
+                <svg class="icon quick__arrow"><use href="#i-arrow-right"/></svg>
+              </button>
+            </div>
+
+            <p class="welcome__note">
+              <svg class="icon"><use href="#i-sparkles"/></svg>
+              天气与票务均来自真实数据源，预订类工具为模拟受理，向导会如实标注。
+            </p>
+          </div>
+        </section>
+
+        <!-- 对话流 -->
+        <section class="thread" id="thread" hidden aria-label="对话记录">
+          <div class="thread__head">
+            <span class="thread__tag"><svg class="icon"><use href="#i-sparkles"/></svg> 旅程进行中</span>
+            <span class="thread__count" id="threadCount"></span>
+          </div>
+          <div class="messages" id="messages" role="log" aria-live="off" aria-relevant="additions"></div>
+        </section>
+
+      </div>
+
+      <div class="composer-wrap">
+        <form class="composer" id="composer" autocomplete="off">
+          <div class="composer__inner" id="composerInner">
+            <span class="composer__sigil" aria-hidden="true"><svg class="icon"><use href="#i-crystal"/></svg></span>
+            <label class="sr-only" for="input">向 SmartVoyage 描述你的旅程</label>
+            <textarea id="input" class="composer__input" rows="1" maxlength="2000"
+              placeholder="告诉我你的目的地、日期与想法，例如：帮我查一下上海后天的天气"></textarea>
+            <button type="button" class="composer__send" id="send" aria-label="发送消息">
+              <span class="composer__send-ring"></span>
+              <svg class="icon send-icon"><use href="#i-send"/></svg>
+              <svg class="icon stop-icon"><use href="#i-stop"/></svg>
+            </button>
+          </div>
+          <div class="composer__foot">
+            <span class="composer__keys">
+              <kbd>Enter</kbd> 发送
+              <i class="dot-sep"></i>
+              <kbd>Shift</kbd><span>+</span><kbd>Enter</kbd> 换行
+            </span>
+            <span class="composer__state" id="composerState">冰雪向导待命中</span>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- ==================== 右：旅行情报 ==================== -->
+    <aside class="insight" id="insight" aria-label="旅行情报">
+      <div class="insight__scroll">
+
+        <section class="panel panel--weather" id="weatherPanel">
+          <header class="panel__head">
+            <span class="panel__icon"><svg class="icon"><use href="#i-cloud-sun"/></svg></span>
+            <h3 class="panel__title">天气情报</h3>
+            <span class="panel__tag" id="wxTag">待查询</span>
+          </header>
+
+          <div class="wx-empty" id="wxEmpty">
+            <span class="wx-empty__glyph"><svg class="icon"><use href="#i-snow"/></svg></span>
+            <p class="wx-empty__title">尚未捕捉到天气</p>
+            <p class="wx-empty__text">让向导查一次目的地，这里会显示真实的实时气象数据。</p>
+            <button type="button" class="ghost-btn" data-prompt="上海明天天气怎么样？">试着查询「上海」</button>
+          </div>
+
+          <div class="wx" id="wx" hidden data-cond="cloud">
+            <div class="wx__fx" aria-hidden="true">
+              <span class="wx-fx wx-fx--sun"></span>
+              <span class="wx-fx wx-fx--cloud"></span>
+              <span class="wx-fx wx-fx--rain"></span>
+              <span class="wx-fx wx-fx--snow"></span>
+            </div>
+
+            <div class="wx__top">
+              <div class="wx__place">
+                <span class="wx__city" id="wxCity">—</span>
+                <span class="wx__region" id="wxRegion"></span>
+              </div>
+              <span class="wx__glyph" id="wxGlyph"><svg class="icon"><use href="#i-cloud-sun"/></svg></span>
+            </div>
+
+            <div class="wx__main">
+              <span class="wx__cond" id="wxCond">—</span>
+              <span class="wx__range" id="wxRange"><b>—</b><i>/</i>—</span>
+            </div>
+
+            <p class="wx__date" id="wxDate">—</p>
+
+            <dl class="wx__stats">
+              <div><dt><svg class="icon"><use href="#i-thermo"/></svg>当前</dt><dd id="wxNow">—</dd></div>
+              <div><dt><svg class="icon"><use href="#i-thermo"/></svg>体感</dt><dd id="wxFeels">—</dd></div>
+              <div><dt><svg class="icon"><use href="#i-droplet"/></svg>湿度</dt><dd id="wxHumidity">—</dd></div>
+              <div><dt><svg class="icon"><use href="#i-wind"/></svg>风向</dt><dd id="wxWindDir">—</dd></div>
+              <div><dt><svg class="icon"><use href="#i-wind"/></svg>风力</dt><dd id="wxWind">—</dd></div>
+              <div><dt><svg class="icon"><use href="#i-droplet"/></svg>降水</dt><dd id="wxPrecip">—</dd></div>
+            </dl>
+
+            <p class="wx__source" id="wxSource">数据来源：和风天气</p>
+          </div>
+        </section>
+
+        <section class="panel panel--inspire">
+          <header class="panel__head">
+            <span class="panel__icon"><svg class="icon"><use href="#i-compass"/></svg></span>
+            <h3 class="panel__title">旅行灵感</h3>
+            <span class="panel__tag panel__tag--static">编辑精选</span>
+          </header>
+
+          <article class="inspire">
+            <p class="inspire__kicker" id="inspireKicker">今日灵感</p>
+            <h4 class="inspire__title" id="inspireTitle">蓝花海里的第一场雪</h4>
+            <p class="inspire__text" id="inspireText">在高原湖泊与花海之间醒来，是旅行者最浪漫的冬日记忆。</p>
+          </article>
+
+          <div class="inspire__chips" id="inspireChips">
+            <button type="button" class="chip-btn" data-prompt="帮我规划一个大理三天两晚的行程">大理</button>
+            <button type="button" class="chip-btn" data-prompt="帮我规划一个京都五天四晚的行程">京都</button>
+            <button type="button" class="chip-btn" data-prompt="帮我规划一个冰岛看极光的行程">冰岛</button>
+            <button type="button" class="chip-btn" data-prompt="帮我规划一个哈尔滨冰雪节的行程">哈尔滨</button>
+          </div>
+
+          <div class="tip">
+            <span class="tip__icon"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+            <p><b>出行小贴士</b>：冰雪季出行请预留 30 分钟值机缓冲，随身携带保温杯，电子设备注意保暖续航。</p>
+          </div>
+          <p class="panel__note">灵感内容为编辑预置，非实时数据。</p>
+        </section>
+
+        <section class="panel panel--status">
+          <header class="panel__head">
+            <span class="panel__icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <h3 class="panel__title">系统运行状态</h3>
+            <span class="panel__tag" id="statusTag">检测中</span>
+          </header>
+
+          <ul class="status" id="statusList">
+            <li class="status__row" data-svc="api" data-state="checking">
+              <span class="status__dot"></span>
+              <span class="status__name">Web API</span>
+              <span class="status__state">检测中</span>
+            </li>
+            <li class="status__row" data-svc="agent" data-state="idle">
+              <span class="status__dot"></span>
+              <span class="status__name">Agent</span>
+              <span class="status__state">未检测</span>
+            </li>
+            <li class="status__row" data-svc="weather" data-state="idle">
+              <span class="status__dot"></span>
+              <span class="status__name">Weather MCP</span>
+              <span class="status__state">未检测</span>
+            </li>
+            <li class="status__row" data-svc="ticket" data-state="idle">
+              <span class="status__dot"></span>
+              <span class="status__name">Ticket MCP</span>
+              <span class="status__state">未检测</span>
+            </li>
+            <li class="status__row" data-svc="travel" data-state="idle">
+              <span class="status__dot"></span>
+              <span class="status__name">Travel MCP</span>
+              <span class="status__state">未检测</span>
+            </li>
+          </ul>
+          <p class="panel__note">「未检测」表示本次会话还没有调用过该服务，并非故障；只有真实调用成功或失败后才会变更为「已验证 / 异常」。</p>
+        </section>
+
+      </div>
+    </aside>
+
+    <div class="scrim" id="scrim" aria-hidden="true"></div>
+  </div>
+</div>
+
+<canvas id="fxFront" class="fx fx--front" aria-hidden="true"></canvas>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+<div class="sr-only" id="announcer" aria-live="polite"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
